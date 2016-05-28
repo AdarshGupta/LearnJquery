@@ -1,0 +1,55 @@
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript" src="jquery-2.2.4.js"></script>
+
+	<style type="text/css">
+
+	ul li{
+		color: red;
+	}
+
+	.emphasis{
+		color: blue;
+	}
+	.bolding{
+		font-weight: bold;
+	}
+
+
+	</style>
+	<script type="text/javascript">
+
+	$(document).ready(function(){
+		$('li:first-child').addClass('bolding');		
+	});
+
+	//Shortcut for above 
+	$(function(){
+		$('li:first-child').addClass('bolding');
+
+	});
+
+	</script>
+</head>
+<body>
+
+	<ul>
+		<li>Gaurav Gupta</li>
+		<li>aasasasa</li>
+		<li>effwfewfef</li>
+	</ul>
+
+
+<script type="text/javascript" src="jquery-2.2.4.js"></script>
+
+<script type="text/javascript">
+
+//jQuery('ul li').css('color', 'green');
+
+//jQuery('ul li').addClass('emphasis');
+$('ul li').addClass('emphasis');	
+
+</script>
+</body>
+</html>
