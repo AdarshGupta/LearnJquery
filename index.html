@@ -5,15 +5,25 @@
 
 	<style type="text/css">
 
-	ul li{
+	li{
+		color: black;
+	}
+
+	ul.emphasis > li{
 		color: red;
 	}
 
 	.emphasis{
-		color: blue;
+		color: cyan;
 	}
+
+	
 	.bolding{
 		font-weight: bold;
+	}
+
+	.container{
+		background-color: yellow;
 	}
 
 
@@ -34,11 +44,21 @@
 </head>
 <body>
 
-	<ul>
-		<li>Gaurav Gupta</li>
-		<li>aasasasa</li>
-		<li>effwfewfef</li>
-	</ul>
+	<div class="container">
+		<ul class="emphasis">
+			<li>Gaurav Gupta</li>
+			<li>aasasasa</li>
+			<li>effwfewfef</li>
+			<li>
+				<ul>
+					<li>a List within a list.Not a direct child.</li>
+				</ul>
+			</li>
+		</ul>
+
+	</div>
+
+	</div>
 
 
 <script type="text/javascript" src="jquery-2.2.4.js"></script>
@@ -49,6 +69,35 @@
 
 //jQuery('ul li').addClass('emphasis');
 $('ul li').addClass('emphasis');	
+
+//This will select only direct li tags under ul tag not hte nested li tag.
+//css selector -   ul.emphasis > li{    }
+$('ul.emphasis').children('li').css('color', 'green');
+//$('ul.emphasis').children('li:first').addClass('emphasis');  
+// custom selector- li:first not in css (li:first-child)
+
+$('ul.emphasis').children('li:nth-child(2)').text("Text Changed!!"); 
+
+$('ul.emphasis').children('li').eq(0).text("Text Changed here!!"); 
+$('ul.emphasis').children('li').eq(0).next().text("Text Changed using next() method!!"); 
+$('ul.emphasis').children('li').eq(3).prev().text("Text Changed using next() method!!"); 
+
+//Selects all li within ul.emphasis
+$('ul.emphasis').find('li').css('color', 'green');
+
+$('li').parent().removeClass('emphasis');
+//To be specific
+$('li').parent('ul').removeClass('emphasis');
+
+//Won't remove. It works only on direct parent
+$('li').parent('.container').removeClass('container');
+//This works
+$('li').parents('.container').removeClass('container');
+//$('li').closest('.container').removeClass('container');
+console.log($('ul').parents('.container'));
+console.log($('ul').closest('.container'));
+
+
 
 </script>
 </body>
