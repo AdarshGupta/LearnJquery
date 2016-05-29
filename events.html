@@ -1,0 +1,61 @@
+<html>
+<head>
+	<title>Events</title>
+	<link rel="stylesheet" type="text/css" href="day.css">
+</head>
+<body>
+
+	<h1>My Event handling JQuery</h1>
+
+	<button>Day</button>
+	<button>Night</button>
+
+<!-- <button data-file="day">Day</button>           Method-2 :  It's a custom attribute. It should begin with 'data-'
+	<button data-file="night">Night</button> -->
+
+
+
+	<script type="text/javascript" src="jquery-2.2.4.js"></script>
+
+	<script type="text/javascript">
+
+	//Self-invoking function
+	(function(){
+
+		$('button').click(function(){
+			//Can be written as -  $('button').on('click', function(){  .click method calls this .on() method only. So , better
+
+			//console.log('Button was clicked!'); 
+			//It is cached in the variable. It is better than referencing $('ul') jquery again-again.
+			//var uls = $('ul');	uls.click();
+//Method-1
+			var stylesheet = $(this).text().toLowerCase();
+			$('link').attr('href', stylesheet + '.css');
+
+//Method-2
+			//var stylesheet = $(this).attr('data-file');
+			//var stylesheet = $(this).data('file');	//Method-3 to access
+			//$('link').attr('href', stylesheet + '.css');
+			//Use var link = $('link');   link.attr();  to avoid redundancy
+			// var $this = $('this');     store it in $this making it easy to understand
+
+			$(this).siblings('button').removeAttr('disabled', 'disabled');   //siblings() refers to elements in same level or same div
+			$(this).attr('disabled', 'disabled');
+
+			//Combining with indentation
+			$(this)
+				.siblings('button')
+				.removeAttr('disabled', 'disabled')
+				.end()									//Ends the control from sibling button and comes back to this button
+				.attr('disabled', 'disabled');
+
+
+		});
+
+	})();
+
+
+	</script>
+
+</body>
+</html>
